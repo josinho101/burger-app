@@ -4,6 +4,18 @@ const lessBaconBtn = document.getElementById("lessBacon");
 const lessCheeseBtn = document.getElementById("lessCheese");
 const lessMeatBtn = document.getElementById("lessMeat");
 const btnOrder = document.getElementById("btnOrder");
+const lblCost = document.getElementById("lblCost");
+
+const saladPrice = parseFloat(document.getElementById("saladPrice").value);
+const cheesePrice = parseFloat(document.getElementById("cheesePrice").value);
+const baconPrice = parseFloat(document.getElementById("baconPrice").value);
+const meatPrice = parseFloat(document.getElementById("meatPrice").value);
+const defaultPrice = 4;
+let burgerCost = 4;
+
+function updatePrice(cost) {
+    lblCost.innerText = cost.toFixed(2);
+}
 
 function hasAnyIngredients() {
     const salads = document.getElementsByClassName("Salad");
@@ -32,6 +44,8 @@ function lessSalad() {
         salads[0].remove();
     }
     checkAndAddMessage();
+    burgerCost -= saladPrice;
+    updatePrice(burgerCost);
 }
 
 function lessCheese() {
@@ -43,6 +57,8 @@ function lessCheese() {
         cheese[0].remove();
     }
     checkAndAddMessage();
+    burgerCost -= cheesePrice;
+    updatePrice(burgerCost);
 }
 
 function lessBacon() {
@@ -54,6 +70,8 @@ function lessBacon() {
         bacons[0].remove();
     }
     checkAndAddMessage();
+    burgerCost -= baconPrice;
+    updatePrice(burgerCost);
 }
 
 function lessMeat() {
@@ -65,6 +83,8 @@ function lessMeat() {
         meats[0].remove();
     }
     checkAndAddMessage();
+    burgerCost -= meatPrice;
+    updatePrice(burgerCost);
 }
 
 function addSalad() {
@@ -73,6 +93,8 @@ function addSalad() {
     burgerTop.after(salad);
     lessSaladBtn.removeAttribute("disabled");
     btnOrder.removeAttribute("disabled");
+    burgerCost += saladPrice;
+    updatePrice(burgerCost);
 }
 
 function addBacon() {
@@ -81,6 +103,8 @@ function addBacon() {
     burgerTop.after(bacon);
     lessBaconBtn.removeAttribute("disabled");
     btnOrder.removeAttribute("disabled");
+    burgerCost += baconPrice;
+    updatePrice(burgerCost);
 }
 
 function addCheese() {
@@ -89,6 +113,8 @@ function addCheese() {
     burgerTop.after(cheese);
     lessCheeseBtn.removeAttribute("disabled");
     btnOrder.removeAttribute("disabled");
+    burgerCost += cheesePrice;
+    updatePrice(burgerCost);
 }
 
 function addMeat() {
@@ -97,6 +123,8 @@ function addMeat() {
     burgerTop.after(meat);
     lessMeatBtn.removeAttribute("disabled");
     btnOrder.removeAttribute("disabled");
+    burgerCost += meatPrice;
+    updatePrice(burgerCost);
 }
 
 function getBreadTop() {
