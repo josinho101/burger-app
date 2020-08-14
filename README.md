@@ -1,2 +1,3 @@
-# burger-app
-Burger App
+# Burger builder
+
+![Screen](./screenshots/burgerbuilder.png)

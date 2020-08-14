@@ -23,6 +23,7 @@ class AppAsset extends AssetBundle
         'css/styles.css',
     ];
     public $js = [
+        'js/burger.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
