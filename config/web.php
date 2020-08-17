@@ -43,26 +43,40 @@ $config = [
             ],
         ],
         'db' => $db,
+<<<<<<< HEAD
         /*
+=======
+>>>>>>> bd41d8ae44bb8503263252db26753b8281aa723a
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
+<<<<<<< HEAD
         */
+=======
+>>>>>>> bd41d8ae44bb8503263252db26753b8281aa723a
     ],
     'params' => $params,
 ];
 
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
+<<<<<<< HEAD
     $config['bootstrap'][] = 'debug';
+=======
+    /*$config['bootstrap'][] = 'debug';
+>>>>>>> bd41d8ae44bb8503263252db26753b8281aa723a
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
+<<<<<<< HEAD
     ];
+=======
+    ];*/
+>>>>>>> bd41d8ae44bb8503263252db26753b8281aa723a
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
