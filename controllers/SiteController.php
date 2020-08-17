@@ -61,7 +61,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $price = array(
+            "salad" => 1,
+            "cheese" => 2,
+            "bacon" => 3,
+            "meat" => 4
+        );
+        
+        return $this->render('index', ['price' => $price]);
     }
 
     /**

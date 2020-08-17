@@ -608,8 +608,9 @@
     }
 }
 
-main{
+.burger-wrapper {
   display: flex;
+  height: 60rem;
 }
 
 body {
@@ -621,7 +622,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: black;
   font-size: 16px;
-  background-color: #cf8f2e;
 }
 
 code {
