@@ -22,8 +22,11 @@ class m200817_061823_orders extends Migration
             'state' =>  $this->string(255),
             'email' =>  $this->string(255),
             'order_type' =>  $this->string(50),
-            'totalcost' => $this->float()
+            'totalcost' => $this->float(),
+            'user' => $this->integer()
         ]);
+        
+        $this->addForeignKey('FK_orders_users', 'orders', 'user', 'users', 'id');
     }
 
     /**
@@ -31,6 +34,7 @@ class m200817_061823_orders extends Migration
      */
     public function safeDown()
     {
+        $this->dropForeignKey('user', 'orders');
         $this->dropTable('orders');
     }
 
