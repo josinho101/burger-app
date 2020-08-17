@@ -33,18 +33,33 @@ AppAsset::register($this);
             <div class="Logo">
                 <img src="/logo/logo.png" alt="Burger app"/>
             </div>
+        
+           
+
             <nav>
-                <ul class="NavigationItems">
-                    <li class="NavigationItem">
-                        <a class="active" aria-current="page" href="/">Burger Builder</a>
-                    </li>
-                    <li class="NavigationItem">
-                        <a href="/orders">Orders</a>
-                    </li>
-                    <li class="NavigationItem">
-                        <a href="/logout">Logout</a>
-                    </li>
-                </ul>
+            <?php
+    // NavBar::begin();
+    echo Nav::widget([
+        'options' => ['class' => 'NavigationItems'],
+        'items' => [
+            ['label' => 'Orders', 'url' => ['/orders/index']],
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Login', 'url' => ['/site/login']]
+            ) : (
+                '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>'
+            )
+        ],
+    ]);
+    // NavBar::end();
+    ?>
+
             </nav>
          </header>
       </div>
