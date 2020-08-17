@@ -31,7 +31,7 @@ AppAsset::register($this);
       <div class="Layout Content">
          <header class="Toolbar">
             <div class="Logo">
-                <img src="logo/logo.png" alt="Burger app"/>
+                <img src="/logo/logo.png" alt="Burger app"/>
             </div>
             <nav>
                 <ul class="NavigationItems">
