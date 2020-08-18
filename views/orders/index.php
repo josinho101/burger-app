@@ -17,7 +17,7 @@ $orders = [["Meat"=>0,"Cheese"=>0,"Salad"=>2,"Bacon"=>0,"Price"=>"5.00"],
 ?>
 
 
-<div class="order_wrapper">
+<div>
 
      <?php foreach($orders as $order){ ?>
 
