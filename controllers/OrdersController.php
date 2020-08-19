@@ -7,8 +7,8 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\Orders;
+
 
 class OrdersController extends Controller
 {
@@ -62,5 +62,18 @@ class OrdersController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Displays contactpage.
+     *
+     * @return string
+     */
+    public function actionContact()
+    {
+        $model = new Orders();
+        return $this->render('contact', [
+            'model' => $model,
+        ]);
     }
 }
