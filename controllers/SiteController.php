@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\db\Query;
 
 class SiteController extends Controller
 {
@@ -61,12 +62,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $price = array(
-            "salad" => 1,
-            "cheese" => 2,
-            "bacon" => 3,
-            "meat" => 4
-        );
+        $price = array();
+        $ingredients = (new Query())
+        ->select(['name', 'price'])
+        ->from('ingredients')
+        ->all();
+        foreach($ingredients as $ingredient){
+            $price[$ingredient['name']] = $ingredient['price'];
+        }
         
         return $this->render('index', ['price' => $price]);
     }
