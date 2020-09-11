@@ -327,6 +327,16 @@
   box-sizing: border-box;
 }
 
+.ContactData{
+  margin: 20px auto;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 .InputElement:focus
 {
   outline: none;
@@ -486,6 +496,8 @@
   margin: 0 8px;
   padding: 5px;
   border: 1px solid #ccc;
+  width: 95px;
+
 }
 
 .SideDrawer

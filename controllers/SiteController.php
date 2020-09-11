@@ -109,21 +109,15 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
+     * Displays orders page.
      *
      * @return Response|string
      */
-    public function actionContact()
+    public function actionOrders()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+    
+        
+        return $this->render('orders');
     }
 
     /**
