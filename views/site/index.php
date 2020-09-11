@@ -39,8 +39,33 @@ $this->title = 'Home';
             <button id="lessMeat" class="Less" disabled="" onclick="lessMeat()">Less</button>
             <button class="More" onclick="addMeat()">More</button>
         </div>
-        <button class="OrderButton" disabled="" id="btnOrder">
+        <button class="OrderButton" disabled="" id="btnOrder" data-toggle="modal" data-target="#orderModal">
             ORDER NOW
         </button>
     </div>
+</div>
+
+<!-- Modal -->
+<div id="orderModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <b>Your Order</b>
+        <p>A delicious burger with following ingredients :</p>
+        <ul>
+            <li>Salad : <span id='salad-count' >0</span></li>
+            <li>Bacon : <span id='bacon-count' >0</span></li>
+            <li>Cheese: <span id='cheese-count' >0</span></li>
+            <li>Meat  : <span id='meat-count' >0</span></li>
+        </ul>
+        <b>Total Price : <span id='modalLblCost' ></span></b>
+        <p>Continue to Checkout?</p>
+        <button type="button" class="Button Danger" data-dismiss="modal">CANCEL</button>
+        <button class="Button Success">CONTINUE</button>
+      </div>
+    </div>
+
+  </div>
 </div>
