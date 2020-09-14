@@ -16,6 +16,8 @@ const saladPrice = parseFloat(document.getElementById("saladPrice").value);
 const cheesePrice = parseFloat(document.getElementById("cheesePrice").value);
 const baconPrice = parseFloat(document.getElementById("baconPrice").value);
 const meatPrice = parseFloat(document.getElementById("meatPrice").value);
+
+
 const defaultPrice = 4;
 let burgerCost = 4;
 let noSalad = 0;
@@ -24,8 +26,8 @@ let noMeat = 0;
 let noBacon = 0;
 
 function updatePrice(cost) {
-    lblCost.innerText = cost.toFixed(2);
-    modalLblCost.innerText = cost.toFixed(2);
+    lblCost.innerText = parseFloat(cost).toFixed(2);
+    modalLblCost.innerText = parseFloat(cost).toFixed(2);
 }
 
 function updateCount(count, ingredient) {
@@ -213,4 +215,15 @@ function AddWelcomeMessage() {
     p.innerText = "Please start adding ingredients !!!.";
     p.classList.add("Message");
     burgerTop.after(p);
+}
+
+function buildPreview(){
+    var ingredients = {'salad':noSalad, 'cheese':noCheese, 'meat':noMeat, 'bacon':noBacon};
+    var totalCost = document.getElementById("modalLblCost").innerHTML;
+    $.ajax({
+    url: "orders/build-preview", 
+    data: {'ingredients':ingredients, 'totalCost':totalCost},
+    success: function(result){
+        $(location).attr('href','orders/checkout');
+    }});
 }
