@@ -76,4 +76,25 @@ class OrdersController extends Controller
             'model' => $model,
         ]);
     }
+
+    /**
+     * ajax method for session
+     *
+     * @return string
+     */
+    public function actionBuildPreview()
+    {
+        $session = Yii::$app->session;
+        $session['ingredients'] = isset($_GET['ingredients']) ? $_GET['ingredients'] : '';
+        $session['burgerCost'] = isset($_GET['totalCost']) ? $_GET['totalCost'] : 0.00;
+        echo 'success';
+        exit;
+    }
+
+    public function actionCheckout()
+    {
+        $session = Yii::$app->session;
+        print_r($session['ingredients']);
+        exit;
+    }
 }

@@ -63,7 +63,7 @@ $this->title = 'Home';
         <b>Total Price : <span id='modalLblCost' ></span></b>
         <p>Continue to Checkout?</p>
         <button type="button" class="Button Danger" data-dismiss="modal">CANCEL</button>
-        <button class="Button Success">CONTINUE</button>
+        <button class="Button Success" id="#checkout-btn" onclick="buildPreview()">CONTINUE</button>
       </div>
     </div>
 
