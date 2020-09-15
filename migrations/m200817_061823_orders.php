@@ -26,7 +26,7 @@ class m200817_061823_orders extends Migration
             'user' => $this->integer()
         ]);
         
-        $this->addForeignKey('FK_orders_users', 'orders', 'user', 'users', 'id');
+        $this->addForeignKey('FK_orders_users', 'orders', 'user', 'user', 'id');
     }
 
     /**
