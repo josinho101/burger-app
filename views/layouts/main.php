@@ -20,8 +20,10 @@ AppAsset::register($this);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php $this->registerCsrfMetaTags() ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap" rel="stylesheet"/>
-    <title>Burger App - <?= Html::encode($this->title) ?></title>
+     <title>Burger App - <?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body>
@@ -32,19 +34,32 @@ AppAsset::register($this);
          <header class="Toolbar">
             <div class="Logo">
                 <img src="../../logo/logo.png" alt="Burger app"/>
-            </div>
+            </div>           
+
             <nav>
-                <ul class="NavigationItems">
-                    <li class="NavigationItem">
-                        <a class="active" aria-current="page" href="/">Burger Builder</a>
-                    </li>
-                    <li class="NavigationItem">
-                        <a href="/orders">Orders</a>
-                    </li>
-                    <li class="NavigationItem">
-                        <a href="/logout">Logout</a>
-                    </li>
-                </ul>
+            <?php
+    // NavBar::begin();
+    echo Nav::widget([
+        'options' => ['class' => 'NavigationItems'],
+        'items' => [
+            ['label' => 'Orders', 'url' => ['/orders/index']],
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Login', 'url' => ['/site/login']]
+            ) : (
+                '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>'
+            )
+        ],
+    ]);
+    // NavBar::end();
+    ?>
+
             </nav>
          </header>
       </div>

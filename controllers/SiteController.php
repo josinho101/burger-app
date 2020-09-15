@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\User;
+use yii\db\Query;
 
 class SiteController extends Controller
 {
@@ -62,12 +63,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $price = array(
-            "salad" => 1,
-            "cheese" => 2,
-            "bacon" => 3,
-            "meat" => 4
-        );
+        $price = array();
+        $ingredients = (new Query())
+        ->select(['name', 'price'])
+        ->from('ingredients')
+        ->all();
+        foreach($ingredients as $ingredient){
+            $price[$ingredient['name']] = $ingredient['price'];
+        }
         
         return $this->render('index', ['price' => $price]);
     }
@@ -107,21 +110,15 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays contact page.
+     * Displays orders page.
      *
      * @return Response|string
      */
-    public function actionContact()
+    public function actionOrders()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+    
+        
+        return $this->render('orders');
     }
 
     /**
