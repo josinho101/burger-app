@@ -9,7 +9,6 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\Orders;
 
-
 class OrdersController extends Controller
 {
     /**
@@ -20,10 +19,15 @@ class OrdersController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['index','contact','build-preview','checkout'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['build-preview'],
+                        'allow' => true,
+                        'roles' => ['?','@'],
+                    ],
+                    [
+                        'actions' => ['index','contact','checkout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -32,7 +36,7 @@ class OrdersController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'build-preview' => ['post'],
                 ],
             ],
         ];
