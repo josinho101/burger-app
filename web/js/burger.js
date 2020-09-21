@@ -221,10 +221,11 @@ function buildPreview(){
     var ingredients = {'salad':noSalad, 'cheese':noCheese, 'meat':noMeat, 'bacon':noBacon};
     var totalCost = document.getElementById("modalLblCost").innerHTML;
     $.ajax({
-    url: "orders/build-preview", 
+    url: "/orders/build-preview",
+    method: "POST",
     data: {'ingredients':ingredients, 'totalCost':totalCost},
     success: function(result){
-        $(location).attr('href','orders/contact');
+        $(location).attr('href','orders/preview');
     }});
 }
 

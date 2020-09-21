@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 
+
 /**
  * This is the model class for table "{{%orders}}".
  *
@@ -42,7 +43,7 @@ class Orders extends \yii\db\ActiveRecord
             [['user'], 'integer'],
             [['name', 'order_type'], 'string', 'max' => 50],
             [['street', 'city', 'zipcode', 'country', 'state', 'email'], 'string', 'max' => 255],
-            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user' => 'id']],
+            [['user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user' => 'id']],
         ];
     }
 

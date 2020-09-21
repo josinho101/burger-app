@@ -9,7 +9,6 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\Orders;
 
-
 class OrdersController extends Controller
 {
     /**
@@ -20,10 +19,15 @@ class OrdersController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['index','contact','build-preview','checkout'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['build-preview'],
+                        'allow' => true,
+                        'roles' => ['?','@'],
+                    ],
+                    [
+                        'actions' => ['index','contact','checkout'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -32,7 +36,7 @@ class OrdersController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                    'build-preview' => ['post'],
                 ],
             ],
         ];
@@ -84,17 +88,21 @@ class OrdersController extends Controller
      */
     public function actionBuildPreview()
     {
+        
         $session = Yii::$app->session;
-        $session['ingredients'] = isset($_GET['ingredients']) ? $_GET['ingredients'] : '';
-        $session['burgerCost'] = isset($_GET['totalCost']) ? $_GET['totalCost'] : 0.00;
+        $session['ingredients'] = isset($_POST['ingredients']) ? $_POST['ingredients'] : '';
+        $session['burgerCost'] = isset($_POST['totalCost']) ? $_POST['totalCost'] : 0.00;
         echo 'success';
         exit;
     }
 
-    public function actionCheckout()
+    public function actionPreview()
     {
         $session = Yii::$app->session;
-        print_r($session['ingredients']);
-        exit;
+        return $this->render('preview', [
+            'ingredients' => $session['ingredients'],
+            
+            ]);
+        
     }
 }
