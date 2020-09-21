@@ -224,6 +224,13 @@ function buildPreview(){
     url: "orders/build-preview", 
     data: {'ingredients':ingredients, 'totalCost':totalCost},
     success: function(result){
-        $(location).attr('href','orders/checkout');
+        $(location).attr('href','orders/contact');
     }});
 }
+
+$(document).ready(function() {
+    $("#continue").click(function() {
+      $("#contactData").toggle();
+    });
+  });
+
