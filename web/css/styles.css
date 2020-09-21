@@ -140,10 +140,41 @@
     text-align: center;
     font-weight:bold;
     font-size: 1.2rem;
-    background-color: white;
-    margin-top: 10px;
-    margin-left: 10px;
-    padding-top: 10px;
+}
+
+.Burger_checkout
+{
+    width :100%;
+    margin: auto;
+    height: 580px;
+    overflow: auto;
+    text-align: center;
+    font-weight:bold;
+    font-size: 1.2rem;
+}
+
+@media(min-width:500px) and (min-height:400px)
+{
+    .Burger_checkout{
+        width:350px;
+        height: 300px;
+    }
+}
+
+@media(min-width:500px) and (min-height:401px)
+{
+    .Burger_checkout{
+        width:450px;
+        height: 400px;
+    }
+}
+
+@media(min-width:1000px) and (min-height:700px)
+{
+    .Burger_checkout{
+        width:700px;
+        height: 600px;
+    }
 }
 
 .BreadBottom {
@@ -637,4 +668,21 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.CheckoutSummary
+{
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.CheckoutSummary .BurgerContainer
+{
+     width:100%;
+     margin:auto
+}
+
+#contactData {
+  display: none;
 }

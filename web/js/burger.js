@@ -12,10 +12,10 @@ const cheeseCount = document.getElementById("cheese-count");
 const meatCount = document.getElementById("meat-count");
 
 
-const saladPrice = parseFloat(document.getElementById("saladPrice").value);
-const cheesePrice = parseFloat(document.getElementById("cheesePrice").value);
-const baconPrice = parseFloat(document.getElementById("baconPrice").value);
-const meatPrice = parseFloat(document.getElementById("meatPrice").value);
+// const saladPrice = parseFloat(document.getElementById("saladPrice").value);
+// const cheesePrice = parseFloat(document.getElementById("cheesePrice").value);
+// const baconPrice = parseFloat(document.getElementById("baconPrice").value);
+// const meatPrice = parseFloat(document.getElementById("meatPrice").value);
 
 
 const defaultPrice = 4;
@@ -225,6 +225,13 @@ function buildPreview(){
     method: "POST",
     data: {'ingredients':ingredients, 'totalCost':totalCost},
     success: function(result){
-        $(location).attr('href','/orders/checkout');
+        $(location).attr('href','orders/contact');
     }});
 }
+
+$(document).ready(function() {
+    $("#continue").click(function() {
+      $("#contactData").toggle();
+    });
+  });
+

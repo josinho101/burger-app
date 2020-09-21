@@ -88,17 +88,21 @@ class OrdersController extends Controller
      */
     public function actionBuildPreview()
     {
+        
         $session = Yii::$app->session;
-        $session['ingredients'] = isset($_GET['ingredients']) ? $_GET['ingredients'] : '';
-        $session['burgerCost'] = isset($_GET['totalCost']) ? $_GET['totalCost'] : 0.00;
+        $session['ingredients'] = isset($_POST['ingredients']) ? $_POST['ingredients'] : '';
+        $session['burgerCost'] = isset($_POST['totalCost']) ? $_POST['totalCost'] : 0.00;
         echo 'success';
         exit;
     }
 
-    public function actionCheckout()
+    public function actionPreview()
     {
         $session = Yii::$app->session;
-        print_r($session['ingredients']);
-        exit;
+        return $this->render('preview', [
+            'ingredients' => $session['ingredients'],
+            
+            ]);
+        
     }
 }
