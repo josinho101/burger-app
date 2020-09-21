@@ -1,34 +1,37 @@
+<?php
+    $session = Yii::$app->session;
 
+?>
 <div class="Burger_checkout">
     <div class="BreadTop">
         <div class="Seeds1"></div>
         <div class="Seeds2"></div>
     </div>
     <?php
-        if ($ingredients['salad']){     
-            for( $i=1;$i<=$ingredients['salad'];$i++ ){
+        if ($session['ingredients']['salad']){     
+            for( $i=1;$i<=$session['ingredients']['salad'];$i++ ){
     ?>
     <div class="Salad"></div>
     <?php 
         }
     }
-        if ($ingredients['cheese']){
-            for( $i=1;$i<=$ingredients['cheese'];$i++ ){
+        if ($session['ingredients']['cheese']){
+            for( $i=1;$i<=$session['ingredients']['cheese'];$i++ ){
         
     ?>
     <div class="Cheese"></div>
     <?php
         }
     }
-        if ($ingredients['bacon']){
-            for( $i=1;$i<=$ingredients['bacon'];$i++ ){
+        if ($session['ingredients']['bacon']){
+            for( $i=1;$i<=$session['ingredients']['bacon'];$i++ ){
     ?>
     <div class="Bacon"></div>
     <?php
         }
     }
-    if ($ingredients['meat']){
-        for( $i=1;$i<=$ingredients['meat'];$i++ ){
+    if ($session['ingredients']['meat']){
+        for( $i=1;$i<=$session['ingredients']['meat'];$i++ ){
     ?>
     <div class="Meat"></div>
     <?php
