@@ -11,12 +11,18 @@ const baconCount = document.getElementById("bacon-count");
 const cheeseCount = document.getElementById("cheese-count");
 const meatCount = document.getElementById("meat-count");
 
-
-// const saladPrice = parseFloat(document.getElementById("saladPrice").value);
-// const cheesePrice = parseFloat(document.getElementById("cheesePrice").value);
-// const baconPrice = parseFloat(document.getElementById("baconPrice").value);
-// const meatPrice = parseFloat(document.getElementById("meatPrice").value);
-
+if (document.getElementById('saladPrice') != null) {
+    var saladPrice = parseFloat(document.getElementById("saladPrice").value);
+}
+if (document.getElementById('cheesePrice') != null) {
+    var cheesePrice = parseFloat(document.getElementById("cheesePrice").value);
+}
+if (document.getElementById('baconPrice') != null) {
+    var baconPrice = parseFloat(document.getElementById("baconPrice").value);
+}
+if (document.getElementById('meatPrice') != null) {
+    var meatPrice = parseFloat(document.getElementById("meatPrice").value);
+}
 
 const defaultPrice = 4;
 let burgerCost = 4;
