@@ -231,7 +231,7 @@ function buildPreview(){
     method: "POST",
     data: {'ingredients':ingredients, 'totalCost':totalCost},
     success: function(result){
-        $(location).attr('href','orders/contact');
+        $(location).attr('href','/orders/contact');
     }});
 }
 
@@ -240,4 +240,3 @@ $(document).ready(function() {
       $("#contactData").toggle();
     });
   });
-

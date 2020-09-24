@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -33,29 +34,32 @@ AppAsset::register($this);
       <div class="Layout Content">
          <header class="Toolbar">
             <div class="Logo">
-                <img src="../../logo/logo.png" alt="Burger app"/>
-            </div>           
-
+                <a href="<?php echo Url::to(['site/index']);?>">
+                    <img src="../../logo/logo.png" alt="Burger app"/>
+                </a>                
+            </div>
             <nav>
-            <?php
+    <?php
     // NavBar::begin();
+    $menuItems = [
+        ['label' => 'Builder', 'url' => ['/site/index']],
+    ];
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+    } else {
+        $menuItems[] = ['label' => 'Orders', 'url' => ['/orders/index']];
+        $menuItems[] = '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                'Logout (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link logout']
+            )
+            . Html::endForm()
+            . '</li>';
+    }
     echo Nav::widget([
         'options' => ['class' => 'NavigationItems'],
-        'items' => [
-            ['label' => 'Orders', 'url' => ['/orders/index']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+        'items' => $menuItems,
     ]);
     // NavBar::end();
     ?>
